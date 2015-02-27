@@ -1,22 +1,29 @@
+require 'pry'
 puts "welcome to the dumb calculator app"
-puts "Enter your first number"
+puts "When you are ready to stop the calculator, type 'stop' and press enter"
+puts "enter a number, if you mess up, the number is 0."
 
-num1 = gets.chomp
-puts "+, -, * or / ???"
-symbol = gets.chomp
-puts "next number?"
-num2 = gets.chomp
-
-puts "you want #{num1} #{symbol} #{num2}"
-
-if symbol == "+"
-  total = num1.to_i + num2.to_i
-elsif symbol == "-"
-  total = num1.to_i - num2.to_i
-elsif symbol == "*"
-  total = num1.to_i * num2.to_i
-elsif symbol == "/"
-  total = num1.to_i / num2.to_i
+total = gets.chomp.to_i
+while true
+  
+  puts "select one. +, -, /, *"
+  symbol = gets.chomp
+  while !/-|\+|\/|\*/.match(symbol) || symbol.length != 1
+    puts "You Need to select +, -, /, or * try again"
+    symbol = gets.chomp
+  end
+  
+  puts "Next Number"
+  num2 = gets.chomp
+  
+  if symbol == "+"
+    total += num2.to_i
+  elsif symbol == "-"
+    total -= num2.to_i
+  elsif symbol == "*"
+    total *= num2.to_i
+  elsif symbol == "/"
+    total /= num2.to_i
+  end
+  puts "Your total is #{total}"
 end
-
-puts "#{total}"
