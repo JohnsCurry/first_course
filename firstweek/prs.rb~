@@ -1,0 +1,14 @@
+puts "Lets play Paper Rock Scissors"
+puts "Choose one, P/R/S"
+
+play_again
+
+while play_again != 'N'
+  computer_choice = ["Rock","Paper","Scissors"].sample
+  player_choice = gets.chomp.upcase
+  while !/[PRS]/.match(player_choice)
+    puts "Please select a correct input, p = Paper r = Rock s = Scissors"
+    player_choice = gets.chomp.upcase
+    end
+  end
+end
